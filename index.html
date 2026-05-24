@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>HAPPY BIRTHDAY</title>
+    <!-- Google Fonts for Premium Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for UI Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ES Modules Importmap to resolve Three.js CDN -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+    
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- 3D Render Viewport (Fixed in background) -->
+    <div id="canvas-container"></div>
+    
+    <!-- Fixed Navigation Header -->
+    <header id="top-bar" class="animate-slide-down">
+      <div class="top-bar-left">
+        <span class="logo">🎈 VASU</span>
+      </div>
+      
+      <div class="top-bar-right">
+        <!-- Audio Toggle Button -->
+        <button id="mute-btn" class="glass-btn icon-btn" title="Toggle Sound">
+          <i class="fa-solid fa-volume-xmark" id="mute-icon"></i>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Scrollable Narrative Container (500vh scroll height) -->
+    <main id="scroll-wrapper">
+      
+      <!-- Section 1: Welcome / Splash -->
+      <section class="scroll-section active" id="sec-welcome">
+        <div class="glass-card welcome-card animate-fade-in">
+          <div class="sparkle-icon">✨🦄🧸</div>
+          <h1 class="elegant-title">HAPPY BIRTHDAY</h1>
+          <p class="welcome-desc">
+            Saal ke sabse pyaare din par ek chota sa tohfa. Niche scroll karke aage badhein... ✨
+          </p>
+          
+          <button id="unmute-init-btn" class="glow-btn">
+            MUSIC PLAY 🎵🔊
+          </button>
+          
+          <div class="scroll-indicator">
+            <span class="scroll-label">NICHE SCROLL KARO 👇</span>
+            <div class="scroll-mouse">
+              <div class="scroll-wheel"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 2: Key of Wisdom -->
+      <section class="scroll-section" id="sec-wisdom">
+        <div class="glass-card info-card left-align" style="text-align: center; padding: 2.2rem 2.6rem;">
+          <div style="position: relative;">
+            <button id="open-gift-btn" class="glow-btn">🎁 TOHFA KHOLO</button>
+            <div id="gift-opened-text" class="gift-speech-bubble" style="display: none;">
+              <div class="bubble-content">
+                <span class="bubble-emoji">🍫</span>
+                <span class="bubble-msg">"Main hoon tumhara gift! 😋🎉"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 3: Candle of Hope -->
+      <section class="scroll-section" id="sec-hope">
+        <div class="glass-card info-card right-align">
+          <h2 class="section-title">Pyaari Mombatti 🕯️</h2>
+          <div class="decor-line"></div>
+          <p class="section-desc">
+            Yeh pyaari mombatti umeed aur roshni ka symbol hai, jo humare cake ko roshan karegi. 🕯️🌟
+          </p>
+        </div>
+      </section>
+      
+      <!-- Section 4: Gift of Love -->
+      <section class="scroll-section" id="sec-love">
+        <div class="glass-card info-card left-align">
+          <h2 class="section-title">Tez Chaku 🔪</h2>
+          <div class="decor-line"></div>
+          <p class="section-desc">
+            Aur yeh chaku cake kaatne ke liye ready hai. Chalo ab aage chalke cake dekhte hain! 🎂
+          </p>
+        </div>
+      </section>
+      
+      <!-- Section 5: Memory Gallery -->
+      <section class="scroll-section" id="sec-gallery">
+        <div class="glass-card gallery-card">
+          <h2 class="section-title">Pyaari Yaadein 📸</h2>
+          <div class="decor-line"></div>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">
+            Vasu ki pyaari shaitaaniyan aur sweet moments! ❤️🧸
+          </p>
+          <div class="polaroid-carousel">
+            <div class="polaroid-frames-container">
+              <div class="polaroid-frame active" data-index="0">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo1.jpg" alt="Vasu Photo 1" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Vasu Ki Smile! 😊</p>
+              </div>
+              <div class="polaroid-frame" data-index="1">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo2.jpg" alt="Vasu Photo 2" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Khushi Ke Pal! 🌟</p>
+              </div>
+              <div class="polaroid-frame" data-index="2">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo3.jpg" alt="Vasu Photo 3" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Dhamal Masti! 🧸</p>
+              </div>
+              <div class="polaroid-frame" data-index="3">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo4.jpg" alt="Vasu Photo 4" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Pyaari Shaitaani! 😜</p>
+              </div>
+              <div class="polaroid-frame" data-index="4">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo5.jpg" alt="Vasu Photo 5" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Cutest Boy! 💖</p>
+              </div>
+              <div class="polaroid-frame" data-index="5">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo6.jpg" alt="Vasu Photo 6" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Sweet Memories! ✨</p>
+              </div>
+              <div class="polaroid-frame" data-index="6">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo7.jpg" alt="Vasu Photo 7" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Masti Time! 🎉</p>
+              </div>
+              <div class="polaroid-frame" data-index="7">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo8.jpg" alt="Vasu Photo 8" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Super Star! 😎</p>
+              </div>
+              <div class="polaroid-frame" data-index="8">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo9.jpg" alt="Vasu Photo 9" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Pyaari Shararat! 🤪</p>
+              </div>
+              <div class="polaroid-frame" data-index="9">
+                <div class="polaroid-img-wrapper">
+                  <img src="./src/assets/photo10.jpg" alt="Vasu Photo 10" onerror="this.src='./src/assets/hero.png'">
+                </div>
+                <p class="polaroid-caption">Dher Saara Pyaar! ❤️</p>
+              </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+              <button id="prev-photo-btn" class="glass-btn icon-btn" title="Previous Photo">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <span id="photo-counter" class="photo-counter-badge">1 / 10</span>
+              <button id="next-photo-btn" class="glow-btn next-btn-gallery">
+                NEXT PHOTO 👉
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 6: Altar & Wishes -->
+      <section class="scroll-section" id="sec-altar">
+        <!-- Interactive Card overlaid once scrolled here -->
+        <div class="glass-card greeting-card" id="final-card">
+          <!-- Step 1: Baking (Visible first) -->
+          <div id="cake-baking-step">
+            <div class="chef-badge">👩‍🍳 MAMI'S KITCHEN</div>
+            <div class="mami-baking-img-wrapper">
+              <img src="./src/assets/mami_baking.png" alt="Mami Baking Cake" class="mami-baking-img">
+            </div>
+            <h2 class="happy-bday-text" style="font-size: 1.6rem; color: var(--gold-glow); text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);">Cake Ban Raha Hai...</h2>
+            <p class="magic-instruction" style="margin-top: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; line-height: 1.6;">
+              Mami kitchen mein dher saare pyaar se Vasu ke liye special cake assemble kar rahi hain! ✨🎂
+            </p>
+            <!-- Neumorphic Progress Bar -->
+            <div class="neumorphic-progress-container">
+              <div id="cake-progress-bar" class="neumorphic-progress-fill"></div>
+            </div>
+            <div id="cake-progress-percent" class="progress-percent">0%</div>
+          </div>
+          
+          <!-- Step 2: Greeting & Cut Button (Hidden initially) -->
+          <div id="cake-greet-step" style="display: none;">
+            <div class="ribbon-decor">🎉 🥳 🎈</div>
+            <h2 class="happy-bday-text" style="font-size: 2.2rem;">VASU KHUSH RAHO!</h2>
+            <p class="magic-instruction" style="margin-top: 0.5rem; margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.6;">
+              Mami ka special cake taiyaar hai! ❤️🎂<br>Aaiye, ab touch karke Vasu ka cake kaatein! 👇
+            </p>
+            <button id="blow-btn" class="glow-btn pulse-anim">
+              CHALO CAKE KAAT TE HAIN 🔪🎂
+            </button>
+          </div>
+        </div>
+        
+        <!-- Final typewriter wish screen (starts hidden) -->
+        <div class="glass-card wish-card" id="final-wish-card" style="display: none;">
+          <div class="sparkles-burst">🎉 🌈 🍭 🧸</div>
+          <h1 class="grand-wish-title">Vasu Khush Raho! 🥳</h1>
+          <div class="wish-letter">
+            <div class="decor-line"></div>
+            <p id="typewriter-text"></p>
+            <div class="decor-line"></div>
+          </div>
+          <button id="restart-btn" class="glass-btn text-btn">
+            VASU KE KUCH ATRANGI KAAM 🤪
+          </button>
+        </div>
+
+        <!-- Video Card (starts hidden) -->
+        <div class="glass-card wish-card" id="final-video-card" style="display: none; max-width: 420px; width: 90%;">
+          <div class="sparkles-burst">🍿 🎥 🧸 🤪</div>
+          <h1 class="grand-wish-title" id="video-card-title" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Vasu Ke Atrangi Kaam! 🤪</h1>
+          <p class="magic-instruction" id="video-card-desc" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Dhamal masti aur atrangi shararatein! 🎥🎬
+          </p>
+          <div class="decor-line"></div>
+          
+          <!-- Delay placeholder (shown between videos) -->
+          <div id="video-delay-msg" style="display: none; padding: 2rem 0; font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; color: var(--gold-glow); text-align: center; height: 180px; align-items: center; justify-content: center; flex-direction: column;">
+            <div style="font-size: 2.2rem; margin-bottom: 0.8rem;">🤫 🍿</div>
+            <div style="font-weight: 600;">Ek aur shararat coming up...</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">Tayyar ho jao!</div>
+          </div>
+
+          <div class="video-container" id="video-player-container">
+            <video id="atrangi-video" class="neumorphic-video" src="./public/atrangi_video.mp4" controls preload="auto" playsinline>
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          <div class="decor-line" style="margin-bottom: 1.5rem;"></div>
+          
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; width: 100%;">
+            <button id="real-restart-btn" class="glow-btn" style="display: none;">
+              DUBARA DEKHO 🔄
+            </button>
+            <button id="go-to-start-btn" class="glass-btn" style="display: none; padding: 0.8rem 1.4rem; font-size: 0.9rem;">
+              SHURU SE DEKHO 🎈
+            </button>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
